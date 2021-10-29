@@ -21,12 +21,8 @@ public abstract class BaseService<P extends BaseDto, E extends BaseEntity> {
 	protected void validateDelete(P dto) throws Exception {
 	}
 
-	protected List<E> getEntitiesByFilter(FilterBase filter) throws Exception {
-		return new ArrayList<E>();
-	}
-
 	public List<P> find(FilterBase filter) throws Exception {
-		List<E> entities = this.getEntitiesByFilter(filter);
+		List<E> entities = this.getRepository().find(filter);
 
 		if (entities != null && entities.size() > 0)
 			return this.getMapper().toDtos(entities);

@@ -35,15 +35,17 @@ public class PriceService extends BaseService<PriceDto, Price> {
 		return Mappers.getMapper(PriceMapper.class);
 	}
 
-	@Override
-	protected List<Price> getEntitiesByFilter(FilterBase filter) throws Exception {
-		return this.priceRepository.find(filter);
-	}
-
 	public PriceDto getPriceByPriority(String applicationDate, String productId, String brandId) throws Exception {
 		FilterPrice filter = this.getFilterByGetPrices(applicationDate, productId, brandId);
 
 		return this.find(filter).get(0);
+	}
+
+	public List<PriceDto> getPriceByBrand(String brandId) throws Exception {
+		FilterPrice filter = new FilterPrice();
+		filter.setBrandId(Long.parseLong(brandId));
+
+		return this.find(filter);
 	}
 
 	private FilterPrice getFilterByGetPrices(String applicationDate, String productCode, String brandId) {

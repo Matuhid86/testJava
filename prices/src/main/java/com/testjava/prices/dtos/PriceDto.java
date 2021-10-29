@@ -17,6 +17,7 @@ public class PriceDto extends BaseDto {
 	private Date endDate;
 	private Long priceList;
 	private ProductDto product;
+	private Integer priority;
 	private Double price;
 	private CurrencyDto currency;
 }

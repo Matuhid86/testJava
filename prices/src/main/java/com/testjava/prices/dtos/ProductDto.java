@@ -9,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductDto extends BaseDto {
 
+	private Long id;
 	private String code;
 	private String description;
 }
